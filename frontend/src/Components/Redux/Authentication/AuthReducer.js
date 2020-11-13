@@ -6,7 +6,8 @@ const initialState = {
   user: {},
 };
 
-export default function (state = initialState, action) {
+//  eslint-disable-next-line 
+export default (state = initialState, action) => {
   switch (action.type) {
     case AUTH_ACTION_TYPES.ON_LOGIN_SUCCESS:
       return {

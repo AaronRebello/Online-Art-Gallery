@@ -7,14 +7,15 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/Users");
 const appConfig = require("../config/appConfig");
+const{ ensureGuest }= require("../Helper/authHelper");
 
-router.post("/login", (req, res) => {
+router.post("/login", ensureGuest, (req, res) => {
   User.findOne({ email: req.body.email }).then((user) => {
     if (!user) {
       res.status(400).json({ msg: "user with this email doesn't exist" });
     } else {
       bcrypt.compare(req.body.password, user.password, function (err, isMatch) {
-        console.log(isMatch);
+        // console.log(isMatch);
         if (isMatch) {
           const payload = {
             _id: user._id,
