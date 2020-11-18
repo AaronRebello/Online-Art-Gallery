@@ -26,7 +26,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         dataState: DATA_STATE.FETCHED_FAILED,
-        error: action.error,
+        art: action.payload,
       };
     default:
       return state;
