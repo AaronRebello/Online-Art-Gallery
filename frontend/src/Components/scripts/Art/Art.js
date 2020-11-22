@@ -12,8 +12,10 @@ class Art extends Component {
   }
 
   render() {
-    console.log(this.props.art);
+    // console.log(this.props.art);
     const { dataState } = this.props.art;
+    const { title, price, description, } = this.state
+
     if (
       dataState === DATA_STATE.NOT_INITIALIZED ||
       dataState === DATA_STATE.FETCHING
@@ -42,12 +44,12 @@ class Art extends Component {
             <div className="row">
               <div className="col-md-12">
               <div className="row">
-              {art.map(art => (
+              {art.map(val => (
                 <div className="col-md-4">
                 <Card>
                 <CardContent>
                 <Typography variant="h4">
-                {art.title}
+                {val.title}
                 </Typography>
                 </CardContent>
                 </Card>
